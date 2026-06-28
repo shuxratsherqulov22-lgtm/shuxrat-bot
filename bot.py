@@ -48,5 +48,5 @@ async def handle_new_message(event):
 
 print("Bot ishga tushmoqda...")
 # Bot token bilan start qilish
-client.start(bot_token=BOT_TOKEN)
+client.start(bot_token=8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4)
 client.run_until_disconnected()
