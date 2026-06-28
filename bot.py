@@ -3,11 +3,12 @@ import http.server
 import threading
 import os
 
-# --- TELEGRAM API MA'LUMOTLARI ---
+# --- TELEGRAM SIZNING MA'LUMOTLARINGIZ ---
 api_id = 36243984        
 api_hash = '5949e0514972286d56099e0bc5fdd045'  
+BOT_TOKEN = 'BU_YERGA_BOTFATHER_BERGAN_TOKENNI_QO_YING' # <- Bot tokeningizni yozing!
 
-# --- RENDER UCHUN SOXTA SERVER (PORT XATOSI BO'LMASLIGI UCHUN) ---
+# --- RENDER PORT XATOSINI YO'QOTISH UCHUN SERVER ---
 def run_dummy_server():
     class DummyHandler(http.server.SimpleHTTPRequestHandler):
         def do_GET(self):
@@ -16,40 +17,36 @@ def run_dummy_server():
             self.end_headers()
             self.wfile.write(b"Bot is active!")
 
-    # Render beradigan portni avtomatik oladi
     port = int(os.environ.get("PORT", 10000))
     server = http.server.HTTPServer(('0.0.0.0', port), DummyHandler)
     server.serve_forever()
 
-# Serverni alohida oqimda orqa fonda yoqamiz
 threading.Thread(target=run_dummy_server, daemon=True).start()
 
 
-# --- AVTO-JAVOB MATNI ---
+# --- BOTNING JAVOBI ---
 AUTO_REPLY_TEXT = """👋 Salom! Men Shuxratning shaxsiy botiman. 
 
 👨‍💻 Hozir Shuxrat biroz Of-line yoki bandroq. Xabaringizni yozib qoldiring! 🚀"""
 
-# Har bitta odamga faqat 1 marta javob qaytarishi uchun ro'yxat
+# Har bir odamga faqat 1 marta javob berish uchun
 replied_users = set()
 
-# YANGI UNIKAL SESSIYA NOMI (Blokirovkadan qutulish uchun)
-client = TelegramClient('shuxrat_session', api_id, api_hash)
+# BOT_TOKEN orqali ulanish (Bu IP xatosini umuman bermaydi!)
+client = TelegramClient('shuxrat_bot_session', api_id, api_hash)
 
-# --- XABARLARNI USHLASH (Matn, Stiker, Rasm, Ovozli xabar va h.k.) ---
 @client.on(events.NewMessage(incoming=True))
 async def handle_new_message(event):
     if event.is_private:
         sender = await event.get_sender()
         if sender and not sender.bot:
             user_id = sender.id
-            
-            # Agar bu foydalanuvchiga hali javob berilmagan bo'lsa
             if user_id not in replied_users:
                 replied_users.add(user_id)
                 await event.reply(AUTO_REPLY_TEXT)
-                print(f"[{sender.first_name}] ga avto-javob daxshat qilib yuborildi.")
+                print(f"[{sender.first_name}] ga avto-javob yuborildi.")
 
-print("Bot muvaffaqiyatli ishga tushdi...")
-client.start()
+print("Bot ishga tushmoqda...")
+# Bot token bilan start qilish
+client.start(bot_token=BOT_TOKEN)
 client.run_until_disconnected()
