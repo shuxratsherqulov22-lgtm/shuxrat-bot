@@ -6,7 +6,7 @@ import os
 # --- TELEGRAM SIZNING MA'LUMOTLARINGIZ ---
 api_id = 36243984        
 api_hash = '5949e0514972286d56099e0bc5fdd045'  
-BOT_TOKEN = 'BU_YERGA_BOTFATHER_BERGAN_TOKENNI_QO_YING' # <- Bot tokeningizni yozing!
+BOT_TOKEN = '8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4' # <- Bot tokeningizni yozing!
 
 # --- RENDER PORT XATOSINI YO'QOTISH UCHUN SERVER ---
 def run_dummy_server():
