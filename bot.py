@@ -34,7 +34,7 @@ AUTO_REPLY_TEXT = """👋 Salom! Men Shuxratning shaxsiy botiman.
 replied_users = set()
 
 # YANGI UNIKAL SESSIYA NOMI (Blokirovkadan qutulish uchun)
-client = TelegramClient('shuxrat_ultimate_session_v4', api_id, api_hash)
+client = TelegramClient('shuxrat_session', api_id, api_hash)
 
 # --- XABARLARNI USHLASH (Matn, Stiker, Rasm, Ovozli xabar va h.k.) ---
 @client.on(events.NewMessage(incoming=True))
