@@ -29,7 +29,7 @@ AUTO_REPLY_TEXT = """👋 Salom! Men Shuxratning shaxsiy botiman.
 
 replied_users = set()
 
-client = TelegramClient('shuxrat_session', api_id, api_hash)
+client = TelegramClient('shuxrat_bot_v2', api_id, api_hash)
 
 # Bu yerda incoming=True har qanday xabarni (matn, stiker, rasm) ushlab oladi
 @client.on(events.NewMessage(incoming=True))
