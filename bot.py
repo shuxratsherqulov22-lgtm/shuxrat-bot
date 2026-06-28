@@ -6,7 +6,7 @@ import os
 # --- TELEGRAM SIZNING MA'LUMOTLARINGIZ ---
 api_id = 36243984        
 api_hash = '5949e0514972286d56099e0bc5fdd045'  
-BOT_TOKEN = '8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4' # <- Bot tokeningizni yozing!
+BOT_TOKEN = '8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4' 
 
 # --- RENDER PORT XATOSINI YO'QOTISH UCHUN SERVER ---
 def run_dummy_server():
@@ -27,7 +27,7 @@ threading.Thread(target=run_dummy_server, daemon=True).start()
 # --- BOTNING JAVOBI ---
 AUTO_REPLY_TEXT = """👋 Salom! Men Shuxratning shaxsiy botiman. 
 
-👨‍💻 Hozir Shuxrat biroz Of-line yoki bandroq. Xabaringizni yozib qoldiring! 🚀"""
+👨‍💻 Hozir Shuxrat biroz ofline yoki bandroq. Xabaringizni yozib qoldiring! 🚀"""
 
 # Har bir odamga faqat 1 marta javob berish uchun
 replied_users = set()
@@ -47,6 +47,6 @@ async def handle_new_message(event):
                 print(f"[{sender.first_name}] ga avto-javob yuborildi.")
 
 print("Bot ishga tushmoqda...")
-# Bot token bilan start qilish
-client.start(bot_token=8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4)
+# Bot token qo'shtirnoq ichida daxshat qilib to'g'rilandi!
+client.start(bot_token="8864441897:AAFDg35dji_WoQi_qSmAOIoLiE_-qKDgzG4")
 client.run_until_disconnected()
